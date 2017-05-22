@@ -1,0 +1,16 @@
+﻿@model AccesoDB.Response.TitulosResponse
+<body>
+    <div class="container bgcolor-1">
+        <section class="content">
+            <h2>Acciones y bonos, ingrese algun criterio de busqueda</h2>
+            <span class="input input--hoshi">
+                <input class="input__field input__field--hoshi" type="text" id="input-buscar">
+                <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+                    <span class="input__label-content input__label-content--hoshi">Buscar...</span>
+                </label>
+            </span>
+            @Html.Partial("Partial/listado", Model)
+
+        </section>
+    </div>
+</body>

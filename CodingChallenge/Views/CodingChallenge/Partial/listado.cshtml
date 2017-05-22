@@ -1,0 +1,23 @@
+﻿@model AccesoDB.Response.TitulosResponse
+<div id="listado-id">
+    @if (Model != null || Model.TitulosViewModel.Any())
+    {
+        if (!Model.IsValid)
+        {
+            <div class="alert alert-danger" role="alert">
+                <a href="#" class="alert-link">@Model.MessageError</a>
+            </div>
+        }
+        else
+        {
+            foreach (var item in Model.TitulosViewModel)
+            {
+            <ul class="list-group">
+                <li class="item-list-style">@item.Simbolo - @item.Descripcion</li>
+            </ul>
+                }
+            }
+        }
+</div>
+
+

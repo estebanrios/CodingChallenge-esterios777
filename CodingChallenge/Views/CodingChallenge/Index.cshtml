@@ -1,0 +1,9 @@
+﻿@model AccesoDB.Response.TitulosResponse
+
+<input type="hidden" id="getTitulosURL" value="@Url.Action("GetList", "CodingChallenge", new { area = "CodingChallenge" })" />
+
+@Html.Partial("Partial/header")
+@Html.Partial("Partial/buscador", Model)
+
+
+
