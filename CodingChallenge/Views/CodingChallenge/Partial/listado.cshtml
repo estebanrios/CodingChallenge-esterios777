@@ -12,12 +12,52 @@
         {
             foreach (var item in Model.TitulosViewModel)
             {
-            <ul class="list-group">
-                <li class="item-list-style">@item.Simbolo - @item.Descripcion</li>
-            </ul>
-                }
+                <div class="panel panel-default panel-style">
+                    <div class="panel-heading panel-header-style">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="list-group">
+                                    <li class="item-list-style">@item.Simbolo - @item.Descripcion</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-5"></div>
+                            <div class="col-md-1">
+                                <ul class="list-group">
+                                    <li style="display: block">
+                                        <button type="button" class="btn btn-default" id=@item.Simbolo aria-label="Left Align" onclick="details('@item.Simbolo')">
+                                            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="panel-body panel-body-style hide" id=@item.Simbolo data-visible="false">
+                        <div class="row row-content">
+                            <div class="col-md-4 row-principal-info">
+                                <span class="label label-default pull-left">Tipo: @item.Tipo</span>
+                            </div>
+                            <div class="col-md-4 row-principal-info">
+                                <span class="label label-primary pull-left">Precio Apertura: $@item.PrecioApertura</span>
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                        </div>
+                        <div class="row row-content">
+                            <div class="col-md-4">
+                                <span class="label label-primary pull-left">Precio Minimo: $@item.Minimo</span>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="label label-primary pull-left">Precio Maximo: $@item.Maximo</span>
+                            </div>
+                            <div class="col-md-4">
+                                <span class="label label-primary pull-left">Ultimo Cierre: $@item.UltimoCierre</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             }
         }
+    }
 </div>
-
-

@@ -217,3 +217,34 @@
     padding: 8px 14px;
     display: block;
 }
+
+.panel-style {
+   
+    max-width: 800px;
+    min-width: 100px;
+}
+
+.panel-header-style {
+    height: 50px;
+}
+
+.panel-body-style {
+    height: 80px;
+    padding: 5px;
+}
+
+.row-content {
+    padding-left: inherit;
+    padding-right: inherit;
+    padding-top: inherit;
+    padding-bottom: inherit;
+}
+
+.hiden {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+

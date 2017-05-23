@@ -21,3 +21,16 @@ CChallenger.searchAccion = function () {
         }, 5)
     });
 }
+
+function details(source) {
+    var panelBody = $('.panel-body#'+ source);
+    if (panelBody.attr('data-visible') === "false") {
+        panelBody.removeClass('hide');
+        panelBody.attr('data-visible', 'true');
+    }
+    else
+    {
+        panelBody.addClass('hide');
+        panelBody.attr('data-visible', 'false');
+    }
+}

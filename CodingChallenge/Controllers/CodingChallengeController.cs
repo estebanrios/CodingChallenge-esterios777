@@ -24,7 +24,7 @@ namespace CodingChallenge.Controllers
         public ActionResult GetList(string cadenaBuscar)
         {
             var result = _ItitulosServices.GetTitulos(cadenaBuscar);
-            return PartialView("Partial/FinancialPlanInformation", result);
+            return PartialView("Partial/listado", result);
 
         }
 

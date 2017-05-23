@@ -18,7 +18,7 @@ namespace AccesoDB._titulosServices
             {
                 using (var context = new IOLdb())
                 {
-                    tituloResponse.TitulosViewModel = context.ITEM_TITULO.Where(x => x.Simbolo.Contains(cadenaBusqueda) ||
+                    tituloResponse.TitulosViewModel = !string.IsNullOrWhiteSpace(cadenaBusqueda) ? context.ITEM_TITULO.Where(x => x.Simbolo.Contains(cadenaBusqueda) ||
                     x.Descripcion.Contains(cadenaBusqueda) ||
                     x.ITEM_TITULO_TYPE.Descripcion.Contains(cadenaBusqueda)).Select(x => new TitulosViewModel() {
                         Simbolo = x.Simbolo,
@@ -28,7 +28,7 @@ namespace AccesoDB._titulosServices
                         PrecioApertura = decimal.Round(x.PrecioApertura ?? 0, 3).ToString(),
                         UltimoCierre = decimal.Round(x.UltimoCierre ?? 0, 3).ToString(),
                         Tipo = x.ITEM_TITULO_TYPE.Descripcion
-                    }).ToList();
+                    }).ToList() : new List<TitulosViewModel>();
                 }
             }
             catch (Exception ex)
