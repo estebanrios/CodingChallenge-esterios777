@@ -2,13 +2,15 @@
 
 CChallenger.loadFunctions = function () {
     CChallenger.searchAccion();
+    CChallenger.changePageAccion();
 }
 
 CChallenger.searchAccion = function () {
+
     $('#input-buscar').keypress(function () {
+         window.setTimeout(function () {
         CChallenger.searchURL = $('#getTitulosURL').val();
         var cadenaBuscar = $('#input-buscar').val(); 
-        window.setTimeout(function () {
             $.ajax({
                 type: "POST",
                 url : CChallenger.searchURL,
@@ -18,7 +20,8 @@ CChallenger.searchAccion = function () {
                     CChallenger.data = result;
                 }
             });
-        }, 5)
+         }, 5)
+         bindHandlers();
     });
 }
 
@@ -34,3 +37,10 @@ function details(source) {
         panelBody.attr('data-visible', 'false');
     }
 }
+
+CChallenger.changePageAccion = function () {
+
+    $('.pagination li').click(function () {
+        var currentElement = $(this);
+    })
+} 

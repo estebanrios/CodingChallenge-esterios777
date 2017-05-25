@@ -1,4 +1,5 @@
-﻿@model AccesoDB.Response.TitulosResponse
+﻿
+@model AccesoDB.Response.TitulosResponse
 <div id="listado-id">
     @if (Model != null || Model.TitulosViewModel.Any())
     {
@@ -7,12 +8,21 @@
             <div class="alert alert-danger" role="alert">
                 <a href="#" class="alert-link">@Model.MessageError</a>
             </div>
-        }
-        else
-        {
-            foreach (var item in Model.TitulosViewModel)
-            {
-                <div class="panel panel-default panel-style">
+                }
+                else
+                {
+                    int index = 0;
+                    int countPage = 1;
+                    int countRow = 1;
+
+                    foreach (var item in Model.TitulosViewModel)
+                    {
+                        if (countRow > index + 7)
+                        {
+                            countPage++;
+                            index += 7;
+                        }
+                <div class="panel panel-default panel-style page-@countPage">
                     <div class="panel-heading panel-header-style">
                         <div class="row">
                             <div class="col-md-6">
@@ -24,7 +34,8 @@
                             <div class="col-md-1">
                                 <ul class="list-group">
                                     <li style="display: block">
-                                        <button type="button" class="btn btn-default" id=@item.Simbolo aria-label="Left Align" onclick="details('@item.Simbolo')">
+                                        <button type="button" class="btn btn-default button-style" id=@item.Simbolo aria-label="Left Align" onclick="details('@item.Simbolo')"
+                                                data-toggle="modal" data-target="#ModalId-@item.Simbolo">
                                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                         </button>
                                     </li>
@@ -33,31 +44,45 @@
 
                         </div>
                     </div>
-                    <div class="panel-body panel-body-style hide" id=@item.Simbolo data-visible="false">
-                        <div class="row row-content">
-                            <div class="col-md-4 row-principal-info">
-                                <span class="label label-default pull-left">Tipo: @item.Tipo</span>
-                            </div>
-                            <div class="col-md-4 row-principal-info">
-                                <span class="label label-primary pull-left">Precio Apertura: $@item.PrecioApertura</span>
-                            </div>
-                            <div class="col-md-4">
-                            </div>
-                        </div>
-                        <div class="row row-content">
-                            <div class="col-md-4">
-                                <span class="label label-primary pull-left">Precio Minimo: $@item.Minimo</span>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="label label-primary pull-left">Precio Maximo: $@item.Maximo</span>
-                            </div>
-                            <div class="col-md-4">
-                                <span class="label label-primary pull-left">Ultimo Cierre: $@item.UltimoCierre</span>
+                    <div id="ModalId-@item.Simbolo" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">@item.Descripcion</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Tipo:             @item.Tipo.</p>
+                                    <p>PrecioApertura:  $@item.PrecioApertura.</p>
+                                    <p>Maximo:          $@item.Maximo.</p>
+                                    <p>Minimo:          $@item.Minimo.</p>
+                                    <p>PrecioApertura:  $@item.PrecioApertura.</p>
+                                    <p>UltimoCierre:    $@item.UltimoCierre.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </div>    
                 </div>
+                countRow++;
             }
+            <nav aria-label="...">
+                <ul class="pagination">
+                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                    @{ 
+                    }
+                    @for (int j = 1; j < countPage; j++)
+                    {
+                        var pag = j + 1;
+                        <li><a href="#">@pag</a></li>
+                    }
+                    <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                </ul>
+            </nav>
         }
     }
+   
 </div>

@@ -1,3 +1,5 @@
+
+
 .input {
     position: relative;
     z-index: 1;
@@ -70,11 +72,11 @@
 
 .input__field--hoshi {
     margin-top: 1em;
-    padding: 0.85em 0.15em;
+    padding: 1.0em 0.15em;
     width: 100%;
     background: transparent;
     color: #595F6E;
-    font-size: 20px;
+    font-size: 16px;
     margin-right: 0px;
     width: 600px;
     max-width: 600px;
@@ -93,7 +95,6 @@
 
 .input__label-content--hoshi {
     position: absolute;
-    font-size: 20px;
 }
 
 .input__label--hoshi::before,
@@ -197,10 +198,16 @@
         color: slateblue
     }
 
+    .content h3 {
+        opacity: 1;
+        margin-bottom: 20px;
+        color: slateblue;
+        margin-top: 0px;
+    }
+
     .content p {
-        margin: 1em 0;
-        padding: 5em 0 0 0;
         font-size: 0.65em;
+        text-align: justify;
     }
 
 .bgcolor-1 {
@@ -212,20 +219,20 @@
     text-align: left;
     background-color: transparent;
     height: 32px;
-    font-size: 16px;
+    font-size: 12px;
     line-height: initial;
     padding: 8px 14px;
     display: block;
 }
 
 .panel-style {
-   
     max-width: 800px;
     min-width: 100px;
 }
 
 .panel-header-style {
-    height: 50px;
+    max-height: 32px;
+    padding: 0px;
 }
 
 .panel-body-style {
@@ -248,3 +255,38 @@
     visibility: visible;
 }
 
+.body-style {
+    padding-top: 10px;
+}
+
+.h1-header-style {
+    padding: 20px;
+    margin-top: 0px;
+}
+
+.jumbotron-style-header {
+    max-height: 120px;
+    margin-bottom: 10px;
+    padding: 0px;
+}
+
+.jumbotron-style-body {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.button-style {
+    padding: 0px;
+    margin-bottom: 2px;
+}
+
+.row-body-style {
+    max-height: 32px;
+}
+
+.pagination-ul {
+    margin: 0px;
+}
+.nav-style {
+    max-height: 44px;
+}
