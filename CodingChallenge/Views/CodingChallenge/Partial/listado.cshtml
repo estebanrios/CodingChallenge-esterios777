@@ -22,7 +22,7 @@
                             countPage++;
                             index += 7;
                         }
-                <div class="panel panel-default panel-style page-@countPage">
+                <div class="panel panel-default panel-style page-@countPage hide">
                     <div class="panel-heading panel-header-style">
                         <div class="row">
                             <div class="col-md-6">
@@ -53,11 +53,11 @@
                                 </div>
                                 <div class="modal-body">
                                     <p>Tipo:             @item.Tipo.</p>
-                                    <p>PrecioApertura:  $@item.PrecioApertura.</p>
+                                    <p>Precio Apertura:  $@item.PrecioApertura.</p>
                                     <p>Maximo:          $@item.Maximo.</p>
                                     <p>Minimo:          $@item.Minimo.</p>
-                                    <p>PrecioApertura:  $@item.PrecioApertura.</p>
-                                    <p>UltimoCierre:    $@item.UltimoCierre.</p>
+                                    <p>Precio Apertura:  $@item.PrecioApertura.</p>
+                                    <p>Ultimo Cierre:    $@item.UltimoCierre.</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -68,18 +68,14 @@
                 </div>
                 countRow++;
             }
-            <nav aria-label="...">
+            <nav aria-label="..." style="height: 78px">
                 <ul class="pagination">
-                    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-                    @{ 
-                    }
+                    <li id="1" class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
                     @for (int j = 1; j < countPage; j++)
                     {
                         var pag = j + 1;
-                        <li><a href="#">@pag</a></li>
+                        <li id="@pag"><a href="#">@pag</a></li>
                     }
-                    <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
                 </ul>
             </nav>
         }

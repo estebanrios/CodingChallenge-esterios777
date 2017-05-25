@@ -3,6 +3,7 @@
 CChallenger.loadFunctions = function () {
     CChallenger.searchAccion();
     CChallenger.changePageAccion();
+    CChallenger.changePageProceses('1');
 }
 
 CChallenger.searchAccion = function () {
@@ -18,10 +19,11 @@ CChallenger.searchAccion = function () {
                 success : function (result) {
                     $('#listado-id').html(result);
                     CChallenger.data = result;
+                    CChallenger.changePageAccion();
+                    CChallenger.setDefaultPag();
                 }
             });
          }, 5)
-         bindHandlers();
     });
 }
 
@@ -39,8 +41,25 @@ function details(source) {
 }
 
 CChallenger.changePageAccion = function () {
-
-    $('.pagination li').click(function () {
+    var pagination = $('.pagination li')
+    pagination.click(function () {
+        pagination.removeClass('active')
         var currentElement = $(this);
-    })
+        currentElement.addClass('active');
+        var currentPag = currentElement.attr('id');
+        CChallenger.changePageProceses(currentPag);
+    });
 } 
+
+CChallenger.changePageProceses = function (pageId) {
+    $('.panel-default').addClass('hide');
+    $('.page-' + pageId).removeClass('hide');
+   
+}
+
+CChallenger.setDefaultPag = function () {
+    var pagination = $('.pagination li');
+    pagination.removeClass('active')
+    $('.pagination li#1').addClass('active');
+    CChallenger.changePageProceses('1');
+}
